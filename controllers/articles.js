@@ -31,7 +31,7 @@ module.exports.deleteArticleById = (req, res, next) => {
     .select('+owner')
     .then((article) => {
       if (!article) {
-        throw new NotFoundError(`Статьи с id : ${req.params.cardId} не существует!`);
+        throw new NotFoundError(`Статьи с id : ${req.params.articleId} не существует!`);
       } else if (req.user._id === String(article.owner)) {
         Article.findByIdAndRemove(req.params.articleId)
           .then((articleRemove) => {

@@ -1,6 +1,6 @@
 {
   "name": "backend-news-explorer-api",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "REST API the project News Explorer with him integration MongoDB database",
   "main": "app.js",
   "scripts": {
