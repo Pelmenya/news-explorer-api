@@ -4,9 +4,11 @@ const FobidenError = require('../errors/ForbiddenError');
 
 module.exports.getArticles = (req, res, next) => {
   Article.find({})
+    .select('+owner')
     .then((articles) => {
       if (articles.length !== 0) {
-        res.send({ data: articles });
+        const data = articles.filter((item) => String(item.owner) === req.user._id);
+        res.send({ myArticles: data });
       } else throw new NotFoundError('Ресурсы не созданы на сервере =)');
     })
     .catch(next);
@@ -18,14 +20,7 @@ module.exports.createArticle = (req, res, next) => {
   } = req.body;
   const owner = req.user._id;
   Article.create({
-    keyword,
-    title,
-    text,
-    date,
-    source,
-    link,
-    image,
-    owner,
+    keyword, title, text, date, source, link, image, owner,
   })
     .then((article) => res.status(201).send({ data: article }))
     .catch(next);
@@ -37,7 +32,7 @@ module.exports.deleteArticleById = (req, res, next) => {
     .then((article) => {
       if (!article) {
         throw new NotFoundError(`Статьи с id : ${req.params.cardId} не существует!`);
-      } else if (req.user._id === article.owner.toString()) {
+      } else if (req.user._id === String(article.owner)) {
         Article.findByIdAndRemove(req.params.articleId)
           .then((articleRemove) => {
             if (articleRemove) {

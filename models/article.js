@@ -43,7 +43,8 @@ const articleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
     select: false,
-  }, // — _id пользователя, сохранившего статью. Нужно задать поведение по умолчанию,
+  },
+  // — _id пользователя, сохранившего статью. Нужно задать поведение по умолчанию,
 });
 
 module.exports = mongoose.model('article', articleSchema);
