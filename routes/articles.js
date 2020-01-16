@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const { validateCreateArticle, validateDeleteArticle } = require('../validate');
 
+const { validateCreateArticle, validateDeleteArticle } = require('../validate');
 const { getArticles, createArticle, deleteArticleById } = require('../controllers/articles');
+
 
 router.get('/articles', getArticles);
 

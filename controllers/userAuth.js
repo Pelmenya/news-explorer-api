@@ -2,6 +2,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.js');
 
+const { MESSAGES } = require('../config');
+
 module.exports.createUser = (req, res, next) => {
   const { name, email, password } = req.body;
   return bcrypt
@@ -22,7 +24,7 @@ module.exports.login = (req, res, next) => {
           httpOnly: true,
           sameSite: true,
         })
-        .send({ message: 'Аутентификация успешна !!!' })
+        .send({ message: MESSAGES.AUTH_OK })
         .end();
     })
     .catch((err) => next(err));
