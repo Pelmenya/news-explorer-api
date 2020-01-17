@@ -7,8 +7,8 @@ module.exports.getArticles = (req, res, next) => {
   Article.find({})
     .select('+owner')
     .then((articles) => {
-      if (articles.length !== 0) {
-        const data = articles.filter((item) => String(item.owner) === req.user._id);
+      const data = articles.filter((item) => String(item.owner) === req.user._id);
+      if (data.length !== 0) {
         res.send({ myArticles: data });
       } else throw new NotFoundError(ERRORS.NOT_CREATE_RESOURCE);
     })
