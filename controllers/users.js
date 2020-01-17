@@ -7,7 +7,10 @@ module.exports.getUser = (req, res, next) => {
   User.findById(String(req.user._id))
     .then((user) => {
       if (user) {
-        res.send({ data: user });
+        const obj = {};
+        obj.name = user.name;
+        obj.email = user.email;
+        res.send({ data: obj });
       } else {
         throw new NotFoundError(ERRORS.NOT_EXIST_USER);
       }
