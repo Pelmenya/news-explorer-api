@@ -24,7 +24,7 @@ module.exports.login = (req, res, next) => {
           httpOnly: true,
           sameSite: true,
         })
-        .send({ message: MESSAGES.AUTH_OK })
+        .send({ message: MESSAGES.AUTH_OK, key: token })
         .end();
     })
     .catch((err) => next(err));

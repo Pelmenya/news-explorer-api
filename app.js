@@ -4,6 +4,8 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+
+const cors = require('./middlewares/cors');
 const { limiter } = require('./middlewares/limiter');
 const errorsAll = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -20,6 +22,7 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
+
 app.use(helmet());
 
 app.use(limiter);
@@ -32,6 +35,8 @@ mongoose.connect(process.env.DB, {
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
+
+app.use(cors);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
