@@ -10,7 +10,7 @@ module.exports.getUser = (req, res, next) => {
         const obj = {};
         obj.name = user.name;
         obj.email = user.email;
-        res.send({ data: obj });
+        res.send(obj);
       } else {
         throw new NotFoundError(ERRORS.NOT_EXIST_USER);
       }

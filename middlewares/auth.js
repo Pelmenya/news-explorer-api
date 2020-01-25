@@ -6,6 +6,7 @@ const { ERRORS } = require('../config');
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
+
   if (!authorization || !authorization.startsWith('Bearer ')) {
     return next(new UnauthorizedError(ERRORS.NEED_TO_LOGIN));
   }
