@@ -8,7 +8,7 @@
 |---------------------------------------------------|---------------------------------------------------------------------|
 | GET /articles                                     | возвращает все сохранённые пользователем статьи                     |
 | POST /articles                                    | создаёт статью с переданными в теле keyword, title, text, date,     |
-|                                                     source, link и image                                                |
+|                                                   | source, link и image                                                |
 | DELETE /articles/articleId                        | удаляет сохранённую статью  по _id                                  |
 | GET /users/me                                     | возвращает информацию о пользователе (email и имя)                  |
 | POST /signup                                      | создаёт пользователя с переданными в теле email, password и name    |
@@ -19,17 +19,6 @@
 Для установки необходимо наличие Node.js и npm
 
 Сохраните проект у себя на компьютере:
-
-git clone `https://github.com/Pelmenya/news-explorer-api.git`
-
-В корне проекта через консоль/терминал запустите команду:
-```
-
-npm install
-```
-
-### После успешной установки станут доступны команды
-Сохраните проект у себя на компьютере:
 ```
 git clone `https://github.com/Pelmenya/news-explorer-api.git`
 ```
@@ -37,6 +26,7 @@ git clone `https://github.com/Pelmenya/news-explorer-api.git`
 ```
 npm install
 ```
+
 ### После успешной установки станут доступны команды
 
 Запуск локального сервера:  
