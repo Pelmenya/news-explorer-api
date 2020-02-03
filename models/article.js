@@ -1,7 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
-
-const { ERRORS } = require('../config');
 
 const articleSchema = new mongoose.Schema({
   keyword: {
@@ -28,18 +25,10 @@ const articleSchema = new mongoose.Schema({
   link: {
     type: String,
     required: true,
-    validate: {
-      validator: validator.isURL,
-      message: ERRORS.INCORRECT_URL,
-    },
   }, // — ссылка на статью. Обязательное поле-строка. Должно быть URL-адресом.
   image: {
     type: String,
     required: true,
-    validate: {
-      validator: validator.isURL,
-      message: ERRORS.INCORRECT_URL,
-    },
   }, //  — ссылка на иллюстрацию к статье. Обязательное поле-строка. Должно быть URL-адресом.
   owner: {
     type: mongoose.Schema.Types.ObjectId,
